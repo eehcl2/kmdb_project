@@ -108,10 +108,15 @@ section:not(.hero) {
   margin-bottom: 1rem;
 }
 
-.recent .recent-info p::after {
+.recent .recent-info p::before {
+  content: '-';
+  margin-right: 0.5rem;
+}
+
+/* .recent .recent-info p::after {
   content: '-';
   margin-left: 0.5rem;
-}
+} */
 
 .recent .recent-info p,
 .recent .recent-info p h4 {

@@ -18,10 +18,23 @@ async function getProducts(page) {
     // Math.floor : 소수점 이하를 버림
     console.log(data.data.movies[randomData]);
     const movieWapper = document.querySelector('.recent-img');
+    const movieInfoWrapper = document.querySelector('.recent-info');
+    const movieTitle = document.querySelector('.recent-title');
     const mainMovie = data.data.movies[randomData];
-    const imgEl = `<img src=${mainMovie.large_cover_image}>`;
 
+    const titleEl = `<h3>${mainMovie.title}</h3>`;
+    const imgEl = `<img src=${mainMovie.large_cover_image}>`;
+    const infoEl = `
+    <h4>Title : <span>${mainMovie.title}/span></h4>
+    <p>Genre : <span>${mainMovie.genres.join(', ')}</span></p>
+    <p>Rating : <span>${mainMovie.rating}</span></p>
+    <p>year : <span>${mainMovie.year}</span></p>
+    <a href="./detail.html?id=${mainMovie.id}" class="btn">Details</a>
+    `;
+
+    movieTitle.insertAdjacentHTML('beforeend', titleEl);
     movieWapper.insertAdjacentHTML('beforeend', imgEl);
+    movieInfoWrapper.insertAdjacentHTML('beforeend', infoEl);
   } catch (error) {
     // 실패할 경우 두번째 코드 블럭으로 이동
     console.log('Error : ', error);
